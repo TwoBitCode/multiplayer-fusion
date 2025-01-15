@@ -4,7 +4,8 @@ using UnityEngine;
 /**
  * This component represents a ball moving at a constant speed.
  */
-public class Ball: NetworkBehaviour {
+public class Ball : NetworkBehaviour
+{
     [Networked] private TickTimer lifeTimer { get; set; }
 
     [SerializeField] float lifeTime = 5.0f;
@@ -21,7 +22,8 @@ public class Ball: NetworkBehaviour {
     [SerializeField] string targetShieldedLog = "Target is shielded, no damage or points change.";
     [SerializeField] string targetNotShieldedLog = "not shielded";
 
-    public override void Spawned() {
+    public override void Spawned()
+    {
         lifeTimer = TickTimer.CreateFromSeconds(Runner, lifeTime);
 
         // Set the initial direction based on the player's facing direction
@@ -31,7 +33,8 @@ public class Ball: NetworkBehaviour {
 
     }
 
-    public override void FixedUpdateNetwork() {
+    public override void FixedUpdateNetwork()
+    {
         if (lifeTimer.Expired(Runner))
         {
             Runner.Despawn(Object);
@@ -45,7 +48,8 @@ public class Ball: NetworkBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         if (!Object.HasStateAuthority) return; // Only execute on the StateAuthority
 
         Health otherHealth = other.GetComponent<Health>();

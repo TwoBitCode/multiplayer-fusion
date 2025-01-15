@@ -25,7 +25,6 @@ public class shield : NetworkBehaviour
                 otherHealth.ProtectPlayerRPC(true, shieldDuration); // Activate the shield for the specified duration
             }
             Health playerHealth = other.GetComponent<Health>();
-
-    }
+        }
     }
 }

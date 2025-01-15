@@ -16,9 +16,9 @@ public class SpawningLauncher : EmptyLauncher
     public override void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         Debug.Log($"Player {player} joined");
-        bool isAllowedToSpawn = (runner.GameMode == GameMode.Shared)? 
-            (player == runner.LocalPlayer):   // in Shared mode, the local player is allowed to spawn.
-            runner.IsServer;                  // in Host or Server mode, only the server is allowed to spawn.
+        bool isAllowedToSpawn = (runner.GameMode == GameMode.Shared) ?
+            (player == runner.LocalPlayer):  // in Shared mode, the local player is allowed to spawn.
+            runner.IsServer;                 // in Host or Server mode, only the server is allowed to spawn.
         if (isAllowedToSpawn)
         {
             // Create a unique position for the player
@@ -29,7 +29,7 @@ public class SpawningLauncher : EmptyLauncher
             _spawnedCharacters.Add(player, networkPlayerObject);
         }
     }
-    
+
     public override void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
         Debug.Log($"Player {player} left");
@@ -48,7 +48,8 @@ public class SpawningLauncher : EmptyLauncher
 
     private void OnEnable() { moveAction.Enable(); shootAction.Enable(); colorAction.Enable(); jumpAction.Enable(); }
     private void OnDisable() { moveAction.Disable(); shootAction.Disable(); colorAction.Disable(); jumpAction.Disable(); }
-    void OnValidate() {
+    void OnValidate()
+    {
         // Provide default bindings for the input actions. Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
         if (moveAction == null)
             moveAction = new InputAction(type: InputActionType.Button);

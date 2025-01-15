@@ -16,7 +16,7 @@ public class RaycastAttack : NetworkBehaviour
     [SerializeField] Color redColor = Color.red;
     [SerializeField] float rayDuration = 1f;
 
-    private void OnEnable() { attack.Enable(); attackLocation.Enable();  }
+    private void OnEnable() { attack.Enable(); attackLocation.Enable(); }
     private void OnDisable() { attack.Disable(); attackLocation.Disable(); }
     void OnValidate()
     {
@@ -45,7 +45,7 @@ public class RaycastAttack : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!HasStateAuthority)  return;
+        if (!HasStateAuthority) return;
 
         if (_attackPressed)
         {

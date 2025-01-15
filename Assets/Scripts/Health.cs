@@ -186,7 +186,7 @@ public class Health : NetworkBehaviour
         }
     }
 
-    private void setText(TextMeshProUGUI textUI ,string text, float points)
+    private void setText(TextMeshProUGUI textUI, string text, float points)
     {
         textUI.text = "";
         textUI.text = $"{text}{points:F2}"; // Ensures proper formatting (e.g., 2 decimals)

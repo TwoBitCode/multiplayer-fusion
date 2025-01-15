@@ -33,7 +33,7 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] Vector2 buttonTwoPosition = new Vector2(0, 1 * initialButtonHeight);
     [SerializeField] Vector2 buttonThreePosition = new Vector2(0, 2 * initialButtonHeight);
     [SerializeField] Vector2 buttonFourPosition = new Vector2(0, 3 * initialButtonHeight);
-    
+
     [SerializeField] string SESSION_NAME = "TestRoom";
 
     public virtual void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -56,7 +56,8 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
     {
         Debug.Log($"OnShutdown reason={shutdownReason}");
     }
-    public virtual void OnConnectedToServer(NetworkRunner runner) {
+    public virtual void OnConnectedToServer(NetworkRunner runner)
+    {
         Debug.Log($"OnConnectedToServer");
     }
     public virtual void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
@@ -93,7 +94,7 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
         Debug.Log($"OnSceneLoadDone");
     }
     public virtual void OnSceneLoadStart(NetworkRunner runner)
-    { 
+    {
         Debug.Log($"OnSceneLoadStart");
     }
     public virtual void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
@@ -123,10 +124,6 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
         _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
 
-        //gameObject.AddComponent<RunnerSimulatePhysics3D>();  
-            // Needed only when using NetworkRigidBody.
-            // Requires the Physics add-on: https://doc.photonengine.com/fusion/current/addons/physics/download
-
         // Create the NetworkSceneInfo from the current scene
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
         var sceneInfo = new NetworkSceneInfo();
@@ -153,11 +150,11 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
         {
 
             // From Microsoft Copilot
-            GUIStyle style = new GUIStyle(GUI.skin.button); 
-            style.fontSize = ButtonFontSize; 
-            style.normal.textColor = whiteColor; 
-            style.hover.textColor = yellowColor; 
-            style.normal.background = MakeTex(ButtonWidth, ButtonHeight, ButtonNormalBackground); 
+            GUIStyle style = new GUIStyle(GUI.skin.button);
+            style.fontSize = ButtonFontSize;
+            style.normal.textColor = whiteColor;
+            style.hover.textColor = yellowColor;
+            style.normal.background = MakeTex(ButtonWidth, ButtonHeight, ButtonNormalBackground);
             style.hover.background = MakeTex(ButtonWidth, ButtonHeight, ButtonHoverBackground);
             style.border = new RectOffset(border, border, border, border);
 
@@ -177,22 +174,20 @@ public class EmptyLauncher : MonoBehaviour, INetworkRunnerCallbacks
             {
                 StartGame(GameMode.Shared, SESSION_NAME);  // This mode does not require Internet connection
             }
-
         }
     }
 
     // From Microsoft Copilot
     private Texture2D MakeTex(int width, int height, Color col)
-    { 
-        Color[] pix = new Color[width * height]; 
+    {
+        Color[] pix = new Color[width * height];
         for (int i = 0; i < pix.Length; i++)
         {
             pix[i] = col;
-        } 
-        Texture2D result = new Texture2D(width, height); 
-        result.SetPixels(pix); 
-        result.Apply(); 
-        return result; 
+        }
+        Texture2D result = new Texture2D(width, height);
+        result.SetPixels(pix);
+        result.Apply();
+        return result;
     }
 }
-
