@@ -6,7 +6,7 @@
 
 🚀 **Tip**: WebGL builds work better on Chrome (there is probably some bug in Firefox).
 
-# 🕹️ Multiplayer Game with Fusion
+## 🕹️ Multiplayer Game with Fusion
 
 This project is a multiplayer game developed using Fusion that includes several enhancements to gameplay mechanics for an engaging user experience.
 
