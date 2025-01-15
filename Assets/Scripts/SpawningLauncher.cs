@@ -17,7 +17,7 @@ public class SpawningLauncher : EmptyLauncher
     {
         Debug.Log($"Player {player} joined");
         bool isAllowedToSpawn = (runner.GameMode == GameMode.Shared) ?
-            (player == runner.LocalPlayer):  // in Shared mode, the local player is allowed to spawn.
+            (player == runner.LocalPlayer) :  // in Shared mode, the local player is allowed to spawn.
             runner.IsServer;                 // in Host or Server mode, only the server is allowed to spawn.
         if (isAllowedToSpawn)
         {

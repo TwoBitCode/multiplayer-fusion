@@ -26,7 +26,8 @@ public class PlayerColor : NetworkBehaviour
 
     public override void Render()
     {
-        foreach (var change in _changes.DetectChanges(this, out var previousBuffer, out var currentBuffer)) {
+        foreach (var change in _changes.DetectChanges(this, out var previousBuffer, out var currentBuffer))
+        {
             switch (change)
             {
                 case nameof(NetworkedColor):
